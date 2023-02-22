@@ -5,6 +5,7 @@ import "./fonts/fonts.css";
 import "./components/ui/common.css";
 import "./components/ui/box.css";
 import "./components/string/string.css";
+import "./components/fibonacci-page/fibonacci-page.css";
 import App from "./components/app/app";
 import reportWebVitals from "./reportWebVitals";
 
