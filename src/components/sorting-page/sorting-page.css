@@ -1,0 +1,22 @@
+.sorting__form {
+    max-width: 980px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.sorting__form-group {
+    display: flex;
+    align-items: center;
+}
+
+.sorting__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 48px;
+    gap: 10px;
+}

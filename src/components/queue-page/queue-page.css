@@ -1,0 +1,24 @@
+.queue__form {
+    margin: 0 auto;
+    max-width: 829px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.queue__form-group {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.queue__list {
+    gap: 16px;
+    width: 100%;
+    margin: 48px auto 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
