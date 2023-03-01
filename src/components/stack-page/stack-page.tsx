@@ -6,6 +6,7 @@ import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import { Input } from "../ui/input/input";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
+import { Stack } from "./Stack";
 
 interface IIsLoading {
   addValue: boolean,
@@ -13,10 +14,14 @@ interface IIsLoading {
   clearStack: boolean,
 }
 
+const newStack = new Stack<string>()
+
 export const StackPage: React.FC = () => {
 
-  const [inputValue, setInputValue] = useState<number | string>('');
-  const [resultArray, setResultArray] = useState<Array<number | string>>([]);
+  const [inputValue, setInputValue] = useState<string>('');
+  // const [resultArray, setResultArray] = useState<Array<number | string>>([]);
+  const [resultArray, setResultArray] = useState<Array<string>>(newStack.returnArray());
+
   const [isLoading, setIsLoading] = useState<IIsLoading>({
     addValue: false,
     removeValue: false,
@@ -30,14 +35,13 @@ export const StackPage: React.FC = () => {
     setInputValue(e.currentTarget.value);
   }
 
-  const push = async (item: string | number) => {
+  const push = async (item: string) => {
     setIsLoading({
       ...isLoading,
       addValue: true,
     });
-
-    setResultArray(resultArray => [...resultArray, item])
-    setInputValue('');
+    newStack.push(item)
+    setResultArray(newStack.returnArray())
 
     await setDelay(SHORT_DELAY_IN_MS);
     setCurrentCircle(currentCircle + 1);
@@ -46,6 +50,7 @@ export const StackPage: React.FC = () => {
       ...isLoading,
       addValue: false,
     });
+    setInputValue('');
   }
 
   const pop = async () => {
@@ -57,7 +62,9 @@ export const StackPage: React.FC = () => {
     setCurrentCircle(resultArray.length - 1);
     await setDelay(SHORT_DELAY_IN_MS);
 
-    setResultArray(resultArray => resultArray.slice(0, resultArray.length - 1))
+    // setResultArray(resultArray => resultArray.slice(0, resultArray.length - 1))
+    newStack.pop()
+    setResultArray(newStack.returnArray())
 
     setIsLoading({
       ...isLoading,
@@ -66,7 +73,8 @@ export const StackPage: React.FC = () => {
   }
 
   const peak = () => {
-    return resultArray.length - 1
+    // return resultArray.length - 1
+    return newStack.peak()
   }
 
   const clear = () => {
@@ -74,8 +82,12 @@ export const StackPage: React.FC = () => {
       ...isLoading,
       clearStack: true,
     });
-    setResultArray([])
+
+    newStack.clear()
+    setResultArray(newStack.returnArray())
+    // setResultArray([])
     setCurrentCircle(0);
+
     setIsLoading({
       ...isLoading,
       clearStack: false,

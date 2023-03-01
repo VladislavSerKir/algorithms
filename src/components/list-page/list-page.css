@@ -1,0 +1,25 @@
+.list-page__form {
+    max-width: 952px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-page__input {
+    max-width: 204px;
+}
+
+.list-page__form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.list-page__form-button_type_small {
+    width: 175px;
+}
+
+.list-page__form-button_type_big {
+    width: 362px;
+}
