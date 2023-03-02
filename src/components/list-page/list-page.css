@@ -16,10 +16,40 @@
     gap: 12px;
 }
 
+.list-page__list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 90px;
+}
+
+.list-page__item {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
 .list-page__form-button_type_small {
     width: 175px;
 }
 
 .list-page__form-button_type_big {
     width: 362px;
+}
+
+.list-page__circle {
+    display: flex;
+    position: absolute;
+}
+
+.topCircle {
+    left: -80px;
+    top: -80px;
+}
+
+.bottomCircle {
+    left: -80px;
+    bottom: -110px;
 }
