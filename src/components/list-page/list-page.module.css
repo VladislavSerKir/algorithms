@@ -1,22 +1,22 @@
-.list-page__form {
+.listpage__form {
     max-width: 952px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
 }
 
-.list-page__input {
+.listpage__input {
     max-width: 204px;
 }
 
-.list-page__form-group {
+.listpage__form_group {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 12px;
 }
 
-.list-page__list {
+.listpage__list {
     list-style: none;
     display: flex;
     justify-content: center;
@@ -25,31 +25,31 @@
     margin-top: 90px;
 }
 
-.list-page__item {
+.listpage__item {
     display: flex;
     align-items: center;
     position: relative;
 }
 
-.list-page__form-button_type_small {
+.listpage__button_type_small {
     width: 175px;
 }
 
-.list-page__form-button_type_big {
+.listpage__button_type_big {
     width: 362px;
 }
 
-.list-page__circle {
+.listpage__circle {
     display: flex;
     position: absolute;
 }
 
 .topCircle {
-    left: -80px;
+    left: 25px;
     top: -80px;
 }
 
 .bottomCircle {
-    left: -80px;
+    left: 25px;
     bottom: -110px;
 }

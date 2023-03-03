@@ -1,4 +1,4 @@
-.queue__form {
+.stack__form {
     margin: 0 auto;
     max-width: 829px;
     display: flex;
@@ -7,13 +7,13 @@
     align-items: flex-start;
 }
 
-.queue__form-group {
+.stack__form_group {
     display: flex;
     flex-direction: row;
     gap: 12px;
 }
 
-.queue__list {
+.stack__list {
     gap: 16px;
     width: 100%;
     margin: 48px auto 0;

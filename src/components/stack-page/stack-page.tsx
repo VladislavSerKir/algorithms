@@ -7,6 +7,7 @@ import { Circle } from "../ui/circle/circle";
 import { Input } from "../ui/input/input";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import { Stack } from "./Stack";
+import styles from './stack-page.module.css'
 
 interface IIsLoading {
   addValue: boolean,
@@ -19,7 +20,6 @@ const newStack = new Stack<string>()
 export const StackPage: React.FC = () => {
 
   const [inputValue, setInputValue] = useState<string>('');
-  // const [resultArray, setResultArray] = useState<Array<number | string>>([]);
   const [resultArray, setResultArray] = useState<Array<string>>(newStack.returnArray());
 
   const [isLoading, setIsLoading] = useState<IIsLoading>({
@@ -62,7 +62,6 @@ export const StackPage: React.FC = () => {
     setCurrentCircle(resultArray.length - 1);
     await setDelay(SHORT_DELAY_IN_MS);
 
-    // setResultArray(resultArray => resultArray.slice(0, resultArray.length - 1))
     newStack.pop()
     setResultArray(newStack.returnArray())
 
@@ -73,7 +72,6 @@ export const StackPage: React.FC = () => {
   }
 
   const peak = () => {
-    // return resultArray.length - 1
     return newStack.peak()
   }
 
@@ -85,7 +83,6 @@ export const StackPage: React.FC = () => {
 
     newStack.clear()
     setResultArray(newStack.returnArray())
-    // setResultArray([])
     setCurrentCircle(0);
 
     setIsLoading({
@@ -96,8 +93,8 @@ export const StackPage: React.FC = () => {
 
   return (
     <SolutionLayout title="Стек">
-      <form className={`stack__form`} onSubmit={(e) => e.preventDefault()}>
-        <div className={`stack__form-group`}>
+      <form className={styles.stack__form} onSubmit={(e) => e.preventDefault()}>
+        <div className={styles.stack__form_group}>
           <Input
             value={inputValue}
             onChange={onChange}
@@ -125,7 +122,7 @@ export const StackPage: React.FC = () => {
           disabled={resultArray.length < 1}
         />
       </form>
-      <ul className={`stack__list`}>
+      <ul className={styles.stack__list}>
         {resultArray.map((item, index: number) => {
           return (
             <Circle

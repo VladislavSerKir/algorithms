@@ -8,6 +8,7 @@ import { ArrowIcon } from "../ui/icons/arrow-icon";
 import { Input } from "../ui/input/input";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import { LinkedList } from "./LinkedList";
+import styles from './list-page.module.css'
 
 interface IIsLoading {
   addHead: boolean,
@@ -350,7 +351,7 @@ export const ListPage: React.FC = () => {
   return (
     <SolutionLayout title="Связный список">
 
-      <form className={`pb-6 list-page__form`}>
+      <form className={`pb-6 ${styles.listpage__form}`}>
         <Input
           onChange={onChange}
           placeholder="Введите значение"
@@ -358,63 +359,64 @@ export const ListPage: React.FC = () => {
           maxLength={4}
           value={inputValue}
           disabled={formDisabled}
-          extraClass={`mr-6 list-page__input`}
+          extraClass={`mr-6 ${styles.listpage__input}`}
         />
-        <div className={`list-page__form-group`}>
+        <div className={styles.listpage__form_group}>
           <Button
             onClick={onAddHead}
             text="Добавить в head"
             isLoader={isLoading.addHead}
-            extraClass={`list-page__form-button_type_small`}
+            extraClass={styles.listpage__button_type_small}
             disabled={formDisabled || inputValue.length === 0 || resultArray.length >= 9}
           />
           <Button
             onClick={onAddTail}
             text="Добавить в tail"
-            extraClass={`list-page__form-button_type_small`}
+            extraClass={styles.listpage__button_type_small}
             isLoader={isLoading.addTail}
             disabled={formDisabled || inputValue.length === 0 || resultArray.length >= 9}
           />
           <Button
             onClick={onRemoveHead}
             text="Удалить из head"
-            extraClass={`list-page__form-button_type_small`}
+            extraClass={styles.listpage__button_type_small}
             isLoader={isLoading.removeHead}
             disabled={formDisabled || resultArray.length <= 1}
           />
           <Button
             onClick={onRemoveTail}
             text="Удалить из tail"
-            extraClass={`list-page__form-button_type_small`}
+            extraClass={styles.listpage__button_type_small}
             isLoader={isLoading.removeTail}
             disabled={formDisabled || resultArray.length <= 1}
           />
         </div>
       </form>
 
-      <form className={`list-page__form`}>
+      <form className={styles.listpage__form}>
         <Input
           onChange={onChangeIndex}
           isLimitText={false}
           type="number"
           maxLength={1}
-          max={9}
+          max={resultArray.length - 1}
+          min={0}
           value={inputIndex}
           disabled={formDisabled}
           placeholder="Введите индекс"
-          extraClass={`list-page__input mr-6`}
+          extraClass={`${styles.listpage__input} mr-6`}
         />
-        <div className={`list-page__form-group`}>
+        <div className={styles.listpage__form_group}>
           <Button
             text="Добавить по индексу"
-            extraClass={`list-page__form-button_type_big`}
+            extraClass={styles.listpage__button_type_big}
             onClick={onAddValueByIndex}
             isLoader={isLoading.addByIndex}
             disabled={formDisabled || inputValue.length === 0 || !inputIndex || inputIndex > resultArray.length - 1}
           />
           <Button
             text="Удалить по индексу"
-            extraClass={`list-page__form-button_type_big`}
+            extraClass={styles.listpage__button_type_big}
             onClick={onRemoveValueByIndex}
             isLoader={isLoading.removeByIndex}
             disabled={formDisabled || resultArray.length === 0 || !inputIndex || inputIndex > resultArray.length - 1 || inputIndex < 1}
@@ -422,10 +424,10 @@ export const ListPage: React.FC = () => {
         </div>
       </form>
 
-      <ul className={`list-page__list`}>
+      <ul className={styles.listpage__list}>
         {resultArray.map((item, index) => {
           return (
-            <li className={`list-page__item`} key={index}>
+            <li className={styles.listpage__item} key={index}>
 
               <Circle
                 letter={item.value}
@@ -442,7 +444,7 @@ export const ListPage: React.FC = () => {
                   state={item.topCircle.state}
                   letter={item.topCircle.value}
                   isSmall
-                  extraClass={`list-page__circle ${item.topCircle.activeClass === 'topCircle' ? 'topCircle' : 'bottomCircle'}`}
+                  extraClass={`${styles.listpage__circle} ${item.topCircle.activeClass === 'topCircle' ? styles.topCircle : styles.bottomCircle}`}
                 />
               )}
 

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
 import { Direction } from "../../types/direction";
 import { ElementStates } from "../../types/element-states";
@@ -7,6 +7,7 @@ import { Button } from "../ui/button/button";
 import { Column } from "../ui/column/column";
 import { RadioInput } from "../ui/radio-input/radio-input";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
+import styles from './sorting-page.module.css'
 
 export interface IResultArray {
   number: number,
@@ -19,17 +20,21 @@ export const SortingPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<string>("default");
   const [radioType, setRadioType] = useState<string>("selection");
 
+  useEffect(() => {
+    setResultArray(generateRandomArray())
+  }, [])
+
   const onChangeTypeSorting = (e: ChangeEvent<HTMLInputElement>): void => {
     setRadioType((e.target as HTMLInputElement).value);
   };
 
   const newArrayHandler = (): void => {
     setResultArray([])
-    setResultArray(generateRandomArray(0, 100, 3, 17))
+    setResultArray(generateRandomArray())
     console.log(resultArray);
   }
 
-  const generateRandomArray = (min: number, max: number, minLength: number, maxLength: number): IResultArray[] => {
+  const generateRandomArray = (min: number = 0, max: number = 100, minLength: number = 3, maxLength: number = 17): IResultArray[] => {
     const arrayLength = randomIntFromInterval(minLength, maxLength)
 
     let randomArray: IResultArray[] = []
@@ -117,14 +122,15 @@ export const SortingPage: React.FC = () => {
 
   return (
     <SolutionLayout title="Сортировка массива">
-      <form className={`sorting__form`}>
-        <div className={`sorting__form-group`}>
+      <form className={styles.sorting__form}>
+        <div className={styles.sorting__form_group}>
           <RadioInput
             onChange={onChangeTypeSorting}
             label="Выбор"
             extraClass="mr-20"
             name={"sorting-type"}
             value={"selection"}
+            checked={radioType === 'selection'}
             disabled={isLoading === Direction.Descending || isLoading === Direction.Ascending}
           />
           <RadioInput
@@ -132,10 +138,11 @@ export const SortingPage: React.FC = () => {
             label="Пузырек"
             name={"sorting-type"}
             value={"bubble"}
+            checked={radioType === 'bubble'}
             disabled={isLoading === Direction.Descending || isLoading === Direction.Ascending}
           />
         </div>
-        <div className={`sorting__form-group`}>
+        <div className={styles.sorting__form_group}>
           <Button
             onClick={() => sortHandler(Direction.Ascending)}
             isLoader={isLoading === Direction.Ascending}
@@ -159,7 +166,7 @@ export const SortingPage: React.FC = () => {
           />
         </div>
       </form>
-      <ul className={`sorting__list`}>
+      <ul className={styles.sorting__list}>
         {resultArray.map((item: IResultArray, index: number) => {
           return (
             <Column

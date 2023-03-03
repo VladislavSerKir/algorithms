@@ -7,6 +7,7 @@ import { Circle } from "../ui/circle/circle";
 import { Input } from "../ui/input/input";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import { Queue } from "./Queue";
+import styles from './queue-page.module.css'
 
 interface IIsLoading {
   enqueue: boolean,
@@ -105,8 +106,8 @@ export const QueuePage: React.FC = () => {
 
   return (
     <SolutionLayout title="Очередь">
-      <form className={`queue__form`} onSubmit={(e) => e.preventDefault()}>
-        <div className={`queue__form-group`}>
+      <form className={styles.queue__form} onSubmit={(e) => e.preventDefault()}>
+        <div className={styles.queue__form_group}>
           <Input
             onChange={onChange}
             isLimitText={true}
@@ -133,7 +134,7 @@ export const QueuePage: React.FC = () => {
           disabled={(head === 0 && tail === 0)}
         />
       </form>
-      <ul className={`queue__list`}>
+      <ul className={styles.queue__list}>
         {resultArray.map((item, index) => {
           return (
             <Circle

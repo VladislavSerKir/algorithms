@@ -4,12 +4,6 @@ import "./index.css";
 import "./fonts/fonts.css";
 import "./components/ui/common.css";
 import "./components/ui/box.css";
-import "./components/string/string.css";
-import "./components/fibonacci-page/fibonacci-page.css";
-import "./components/stack-page/stack-page.css";
-import "./components/queue-page/queue-page.css";
-import "./components/sorting-page/sorting-page.css";
-import "./components/list-page/list-page.css"
 import App from "./components/app/app";
 import reportWebVitals from "./reportWebVitals";
 

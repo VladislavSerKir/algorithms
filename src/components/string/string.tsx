@@ -6,6 +6,7 @@ import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import { Input } from "../ui/input/input";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
+import styles from './string.module.css'
 
 export const StringComponent: React.FC = () => {
 
@@ -59,9 +60,9 @@ export const StringComponent: React.FC = () => {
 
   return (
     <SolutionLayout title="Строка">
-      <form className={`form`} onSubmit={onSubmit}>
+      <form className={styles.form} onSubmit={onSubmit}>
         <Input
-          extraClass={`form__input`}
+          extraClass={styles.form__input}
           onChange={onChange}
           isLimitText={true}
           maxLength={11}
@@ -75,7 +76,7 @@ export const StringComponent: React.FC = () => {
           disabled={!inputValue}
         />
       </form>
-      <ul className={`list`}>
+      <ul className={styles.list}>
         {resultArray.map((item: string, index: number) => {
           return (
             <Circle

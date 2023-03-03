@@ -5,6 +5,7 @@ import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import { Input } from "../ui/input/input";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
+import styles from './fibonacci-page.module.css'
 
 export const FibonacciPage: React.FC = () => {
 
@@ -44,9 +45,9 @@ export const FibonacciPage: React.FC = () => {
 
   return (
     <SolutionLayout title="Последовательность Фибоначчи">
-      <form className={`fibonacci__form`} onSubmit={onSubmit}>
+      <form className={styles.fibonacci__form} onSubmit={onSubmit}>
         <Input
-          extraClass={`fibonacci__form-input`}
+          extraClass={styles.fibonacci__form_input}
           value={inputValue}
           onChange={onChange}
           type="number"
@@ -63,7 +64,7 @@ export const FibonacciPage: React.FC = () => {
           disabled={1 > inputValue || inputValue > 19 || inputValue === ''}
         />
       </form>
-      <ul className={`fibonacci__list`} style={resultArray.length < 10 ?
+      <ul className={styles.fibonacci__list} style={resultArray.length < 10 ?
         { justifyContent: 'center' } : { justifyContent: 'flex-start' }}>
         {resultArray && resultArray.map((item: number, index: number) => {
           return (
