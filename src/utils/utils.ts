@@ -10,8 +10,9 @@ export const swapValue = (arr: string[], firstIndex: number, secondIndex: number
     arr[secondIndex - firstIndex] = tmp
 };
 
-export const swap = (arr: IResultArray[], firstIndex: number, secondIndex: number): void => {
+export const swap = (arr: IResultArray[], firstIndex: number, secondIndex: number): IResultArray[] => {
     const temp = arr[firstIndex];
     arr[firstIndex] = arr[secondIndex];
     arr[secondIndex] = temp;
+    return arr
 };

@@ -9,7 +9,7 @@ import { SortingPage } from "../sorting-page/sorting-page";
 import { StackPage } from "../stack-page/stack-page";
 import styles from "./app.module.css"
 
-function App() {
+export function App() {
   return (
     <div className={styles.app}>
       <BrowserRouter>
