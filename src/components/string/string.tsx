@@ -60,8 +60,9 @@ export const StringComponent: React.FC = () => {
 
   return (
     <SolutionLayout title="Строка">
-      <form className={styles.form} onSubmit={onSubmit}>
+      <form className={styles.form} onSubmit={onSubmit} data-cy="string-submit">
         <Input
+          data-cy="string-input"
           extraClass={styles.form__input}
           onChange={onChange}
           isLimitText={true}
@@ -70,16 +71,18 @@ export const StringComponent: React.FC = () => {
           disabled={isLoading}
         />
         <Button
+          data-cy="string-button"
           isLoader={isLoading}
           text="Развернуть"
           type="submit"
           disabled={!inputValue}
         />
       </form>
-      <ul className={styles.list}>
+      <ul className={styles.list} data-cy="string-circles">
         {resultArray.map((item: string, index: number) => {
           return (
             <Circle
+              data-cy="string-circle"
               key={index}
               state={changeCircleType(index, currentCircle, resultArray)}
               letter={item}
