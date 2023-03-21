@@ -109,25 +109,29 @@ export const QueuePage: React.FC = () => {
       <form className={styles.queue__form} onSubmit={(e) => e.preventDefault()}>
         <div className={styles.queue__form_group}>
           <Input
+            data-cy="queue-input"
             onChange={onChange}
             isLimitText={true}
             maxLength={4}
             value={inputValue}
           />
           <Button
+            data-cy="queue-button"
             onClick={() => enqueue(inputValue)}
             text="Добавить"
             isLoader={isLoading.enqueue}
             disabled={!inputValue || tail === 7}
           />
           <Button
+            data-cy="queue-delete"
             text="Удалить"
             isLoader={isLoading.dequeue}
             onClick={() => dequeue()}
-            disabled={resultArray.length === 0}
+            disabled={(head === 0 && tail === 0)}
           />
         </div>
         <Button
+          data-cy="queue-clear"
           onClick={() => clear()}
           text="Очистить"
           isLoader={isLoading.clearStack}

@@ -29,8 +29,6 @@ export const StackPage: React.FC = () => {
   });
   const [currentCircle, setCurrentCircle] = useState<number>(0)
 
-  console.log(resultArray);
-
   const onChange = (e: FormEvent<HTMLInputElement>): void => {
     setInputValue(e.currentTarget.value);
   }
@@ -96,6 +94,7 @@ export const StackPage: React.FC = () => {
       <form className={styles.stack__form} onSubmit={(e) => e.preventDefault()}>
         <div className={styles.stack__form_group}>
           <Input
+            data-cy="stack-input"
             value={inputValue}
             onChange={onChange}
             isLimitText={true}
@@ -103,12 +102,14 @@ export const StackPage: React.FC = () => {
             disabled={resultArray.length > 8}
           />
           <Button
+            data-cy="stack-button"
             isLoader={isLoading.addValue}
             text="Добавить"
             onClick={() => push(inputValue)}
             disabled={!inputValue || resultArray.length > 8}
           />
           <Button
+            data-cy="stack-delete"
             isLoader={isLoading.removeValue}
             text="Удалить"
             onClick={() => pop()}
@@ -116,13 +117,14 @@ export const StackPage: React.FC = () => {
           />
         </div>
         <Button
+          data-cy="stack-clear"
           isLoader={isLoading.clearStack}
           text="Очистить"
           onClick={() => clear()}
           disabled={resultArray.length < 1}
         />
       </form>
-      <ul className={styles.stack__list}>
+      <ul className={styles.stack__list} data-cy="stack-circles">
         {resultArray.map((item, index: number) => {
           return (
             <Circle

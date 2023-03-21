@@ -1,4 +1,4 @@
-
+import { DELAY_IN_MS } from "../support/constants";
 
 describe('Module fibonacci works correctly', function () {
 
@@ -26,7 +26,7 @@ describe('Module fibonacci works correctly', function () {
                     .contains(correctOrder[i])
             })
 
-            cy.tick(1000);
+            cy.tick(DELAY_IN_MS);
         }
     })
 }); 

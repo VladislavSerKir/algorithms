@@ -1,6 +1,4 @@
-const defaultColor = 'rgb(0, 50, 255)'
-const changingColor = 'rgb(210, 82, 225)'
-const modifiedColor = 'rgb(127, 224, 81)'
+import { changingColor, defaultColor, modifiedColor } from "../support/constants";
 
 describe('Module string works correctly', function () {
     beforeEach(function () {
@@ -24,10 +22,6 @@ describe('Module string works correctly', function () {
                 .eq(0)
                 .should('have.css', 'border-color', changingColor)
                 .contains('a')
-            // .invoke('attr', 'class')
-            // .then(classList => expect(classList).contains('circle_changing'))
-            // .children().should('have.text', 'a')
-            // .eq(0)
             cy.wrap(circle)
                 .eq(1)
                 .should('have.css', 'border-color', defaultColor)
