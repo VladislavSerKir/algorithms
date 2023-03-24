@@ -243,7 +243,7 @@ export const ListPage: React.FC = () => {
       value: '',
       topCircle: {
         state: ElementStates.Changing,
-        value: '',
+        value: resultArray[0].value,
         activeClass: "bottomCircle"
       }
     }
@@ -276,7 +276,7 @@ export const ListPage: React.FC = () => {
       value: '',
       topCircle: {
         state: ElementStates.Changing,
-        value: '',
+        value: resultArray[resultArray.length - 1].value,
         activeClass: "bottomCircle"
       }
     }
@@ -316,7 +316,7 @@ export const ListPage: React.FC = () => {
       value: '',
       topCircle: {
         state: ElementStates.Changing,
-        value: '',
+        value: resultArray[inputIndex].value,
         activeClass: "bottomCircle"
       }
     }
@@ -353,6 +353,7 @@ export const ListPage: React.FC = () => {
 
       <form className={`pb-6 ${styles.listpage__form}`}>
         <Input
+          data-cy="list-input-value"
           onChange={onChange}
           placeholder="Введите значение"
           isLimitText={true}
@@ -363,6 +364,7 @@ export const ListPage: React.FC = () => {
         />
         <div className={styles.listpage__form_group}>
           <Button
+            data-cy="list-add-to-head"
             onClick={onAddHead}
             text="Добавить в head"
             isLoader={isLoading.addHead}
@@ -370,6 +372,7 @@ export const ListPage: React.FC = () => {
             disabled={formDisabled || inputValue.length === 0 || resultArray.length >= 9}
           />
           <Button
+            data-cy="list-add-to-tail"
             onClick={onAddTail}
             text="Добавить в tail"
             extraClass={styles.listpage__button_type_small}
@@ -377,6 +380,7 @@ export const ListPage: React.FC = () => {
             disabled={formDisabled || inputValue.length === 0 || resultArray.length >= 9}
           />
           <Button
+            data-cy="list-remove-from-head"
             onClick={onRemoveHead}
             text="Удалить из head"
             extraClass={styles.listpage__button_type_small}
@@ -384,6 +388,7 @@ export const ListPage: React.FC = () => {
             disabled={formDisabled || resultArray.length <= 1}
           />
           <Button
+            data-cy="list-remove-from-tail"
             onClick={onRemoveTail}
             text="Удалить из tail"
             extraClass={styles.listpage__button_type_small}
@@ -395,6 +400,7 @@ export const ListPage: React.FC = () => {
 
       <form className={styles.listpage__form}>
         <Input
+          data-cy="list-input-index"
           onChange={onChangeIndex}
           isLimitText={false}
           type="number"
@@ -408,13 +414,15 @@ export const ListPage: React.FC = () => {
         />
         <div className={styles.listpage__form_group}>
           <Button
+            data-cy="list-add-by-index"
             text="Добавить по индексу"
             extraClass={styles.listpage__button_type_big}
             onClick={onAddValueByIndex}
             isLoader={isLoading.addByIndex}
-            disabled={formDisabled || inputValue.length === 0 || !inputIndex || inputIndex > resultArray.length - 1}
+            disabled={formDisabled || inputValue.length === 0 || inputIndex > resultArray.length - 1}
           />
           <Button
+            data-cy="list-remove-by-index"
             text="Удалить по индексу"
             extraClass={styles.listpage__button_type_big}
             onClick={onRemoveValueByIndex}
