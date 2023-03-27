@@ -1,6 +1,8 @@
+import { baseUrl } from "../support/constants";
+
 describe('Routing works correctly', function () {
     beforeEach(function () {
-        cy.visit('http://localhost:3000');
+        cy.visit(baseUrl);
     });
 
     it('Pathname /recursion works correctly', () => {

@@ -1,23 +1,23 @@
-import { changingColor, defaultColor, modifiedColor } from "../support/constants";
+import { baseUrl, changingColor, datacyStringButton, datacyStringInput, defaultColor, divClassCircleCircle, modifiedColor } from "../support/constants";
 
 describe('Module string works correctly', function () {
     beforeEach(function () {
-        cy.visit('http://localhost:3000/recursion');
+        cy.visit(`${baseUrl}/recursion`);
     });
 
     it('should disable button while empty input', () => {
-        cy.get('[data-cy="string-input"]').should('have.value', '');
-        cy.get('[data-cy="string-button"]').should('be.disabled')
+        cy.get(datacyStringInput).should('have.value', '');
+        cy.get(datacyStringButton).should('be.disabled')
     })
 
     it('should works correctly with input value: abcde', () => {
-        cy.get('[data-cy="string-input"]').type('abcde');
-        cy.get('[data-cy="string-button"]').click()
-        cy.get('[data-cy="string-button"]').should('be.disabled')
+        cy.get(datacyStringInput).type('abcde');
+        cy.get(datacyStringButton).click()
+        cy.get(datacyStringButton).should('be.disabled')
 
         cy.clock()
 
-        cy.get('div[class^=circle_circle]').then((circle) => {
+        cy.get(divClassCircleCircle).then((circle) => {
             cy.wrap(circle)
                 .eq(0)
                 .should('have.css', 'border-color', changingColor)
