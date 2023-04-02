@@ -14,7 +14,7 @@ export function App() {
     <div className={styles.app}>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact>
+          <Route path="/algorithms" exact>
             <MainPage />
           </Route>
           <Route path="/recursion">
